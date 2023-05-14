@@ -165,17 +165,29 @@ img {
     height: 750px;
     background: white;
     box-shadow: 0 0 26px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal__content {
-    padding: 50px 75px;
+    padding: 50px 30px;
 }
 
 .inputs__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin-top: 50px;
+}
+
+#formImgUrl{
+    width: 90%;
+}
+
+#formContent{
+    width: 90%;
 }
 
 .input {
@@ -201,8 +213,9 @@ img {
 
 .modal__buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 50px;
+    width: 100%;
 }
 
 .button--pink {
