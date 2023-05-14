@@ -1,6 +1,60 @@
 const body = document.getElementById('body');
 const main = document.getElementById('main');
 
+//Navigation element
+const nav= document.createElement('nav');
+nav.className = "nav";
+document.body.appendChild(nav);
+
+//Navigation container
+const navContainer = document.createElement('ul');
+navContainer.className = "nav__container";
+nav.appendChild(navContainer);
+
+//Travel Updates Nav Item
+const navigationItem1 = document.createElement('li');
+navigationItem1.className = "nav__item";
+navContainer.appendChild(navigationItem1);
+
+const navLink1 = document.createElement('a');
+navLink1.className ="nav__link";
+navLink1.href = "index.html";
+navLink1.textContent = "Travel updates";
+navigationItem1.appendChild(navLink1);
+
+//Reviews Nav Item
+const navigationItem2 = document.createElement('li');
+navigationItem2.className = "nav__item";
+navContainer.appendChild(navigationItem2);
+
+const navLink2 = document.createElement('a');
+navLink2.className ="nav__link";
+navLink2.href = "reviews.html";
+navLink2.textContent = "Reviews";
+navigationItem2.appendChild(navLink2);
+
+//About Nav Item
+const navigationItem3 = document.createElement('li');
+navigationItem3.className = "nav__item";
+navContainer.appendChild(navigationItem3);
+
+const navLink3 = document.createElement('a');
+navLink3.className ="nav__link";
+navLink3.href = "about.html";
+navLink3.textContent = "About";
+navigationItem3.appendChild(navLink3);
+
+//Contact Nav Item
+const navigationItem4 = document.createElement('li');
+navigationItem4.className = "nav__item";
+navContainer.appendChild(navigationItem4);
+
+const navLink4 = document.createElement('a');
+navLink4.className ="nav__link";
+navLink4.href = "contact.html";
+navLink4.textContent = "Contact";
+navigationItem4.appendChild(navLink4);
+
 // BUTON ADAUGARE ARTICOL
 
 var buttonContainer = document.createElement('div');
@@ -107,4 +161,20 @@ function closeModal() {
     body.className = '';
 }
 
-functiom
+
+//Butoane next and previous
+const footer = document.createElement('footer');
+footer.className = "footer";
+document.body.appendChild(footer);
+
+const footerLink1 = document.createElement('a');
+footerLink1.className ="footer__link";
+footerLink1.href = "";//to decide later what to connect
+footerLink1.textContent = "previous";
+footer.appendChild(footerLink1);
+
+const footerLink2 = document.createElement('a');
+footerLink2.className ="footer__link";
+footerLink2.href = "";//to decide later what to connect
+footerLink2.textContent = "next";
+footer.appendChild(footerLink2);
