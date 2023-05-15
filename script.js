@@ -1,13 +1,21 @@
 const body = document.getElementById('body');
-
-let container = document.createElement('div');
-container.className ='container';
-document.body.appendChild(container);
-
+const main = document.getElementById('main')
 //Navigation element
 const nav= document.createElement('nav');
 nav.className = "nav";
-container.appendChild(nav);
+main.appendChild(nav);
+//Add button
+var buttonContainer = document.createElement('div');
+buttonContainer.className ='add__container';
+main.appendChild(buttonContainer);
+
+
+const container = document.createElement('div');
+container.className ='container';
+main.appendChild(container);
+
+
+
 
 //Navigation container
 const navContainer = document.createElement('ul');
@@ -60,9 +68,7 @@ navigationItem4.appendChild(navLink4);
 
 // BUTON ADAUGARE ARTICOL
 
-var buttonContainer = document.createElement('div');
-buttonContainer.className ='add__container';
-body.appendChild(buttonContainer);
+
 
 var addButton = document.createElement('button');
 addButton.innerText = ' + Add Article';
@@ -87,8 +93,8 @@ function getArticlesFromServer() {
 
 // Remove articles list if exist
 function removeOldArticlesFromDOM () {
-    while (body.firstChild) {
-        body.removeChild(body.firstChild);
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
     }
 }
 
@@ -174,7 +180,7 @@ function renderArticles(articles) {
     // Create and append tags
     for (let i = 0; i < articles.length; i++) {
         let articleDOMNode = createArticleDOMNode(articles[i]);
-        body.appendChild(articleDOMNode);
+        container.appendChild(articleDOMNode);
     }
 }
 
@@ -253,7 +259,6 @@ modal.appendChild(textarea);
 modal.appendChild(buttonsContainer);
 
 //
-
 
 
 function openAddModal() {
