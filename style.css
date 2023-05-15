@@ -4,6 +4,9 @@ html {
 }
 
 p {
+    width: 780px;
+    display: flex;
+    justify-content: center;
     margin-bottom: 30px;
     line-height: 1.9;
 }
@@ -12,9 +15,14 @@ img {
     width: 100%;
 }
 
-.container {
+main {
     margin: 0 auto;
     width: 1280px;
+}
+
+body{
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .nav {
@@ -87,6 +95,12 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     padding: 0;
+}
+
+.content__container {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
 }
 
 .info__item:not(:last-child):after {
