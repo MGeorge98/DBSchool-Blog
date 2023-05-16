@@ -69,7 +69,6 @@ navigationItem4.appendChild(navLink4);
 
 var addButton = document.createElement('button');
 addButton.innerText = ' + Add Article';
-// addButton.onclick = openAddModal;
 addButton.addEventListener('click', openAddModal);
 addButton.className = 'button';
 addButton.id = 'add';
@@ -237,6 +236,13 @@ function deleteArticleFromServer(id) {
     });
 }
 
+//  Remove Save Button to clear events more at https://stackoverflow.com/questions/9251837/how-to-remove-all-listeners-in-an-element
+function clearSaveButtonEvents() {
+    let newUpdateButton = saveButton.cloneNode(true);
+    saveButton.parentNode.replaceChild(newUpdateButton, saveButton);
+    saveButton = document.getElementById('save');
+}
+
 // Update article
 function updateArticleToServer(id) {
     // creat put object
@@ -246,8 +252,6 @@ function updateArticleToServer(id) {
         author: formAuthor.value,
         date: formDate.value,
         imgUrl: formImgUrl.value,
-        saying: formSaying.value,
-        summary: formSummary.value,
         content: formContent.value
     }
     // Call put request to update the article
@@ -332,21 +336,39 @@ var buttonsContainer = document.createElement('div');
 buttonsContainer.className = 'modal__buttons';
 
 // Create buttons
-var buttonIds = ['cancel', 'save'];
-var buttonTexts = ['Cancel', 'Save'];
-for (var i = 0; i < buttonIds.length; i++) {
-    var button = document.createElement('button');
-    button.id = buttonIds[i];
-    button.type = 'button';
-    button.className = 'button';
-    if (button.id === 'save') {
-        button.className += ' button--pink';
-    } else {
-        button.addEventListener('click', closeModal)
-    }
-    button.innerText = buttonTexts[i];
-    buttonsContainer.appendChild(button);
-}
+// var buttonIds = ['cancel', 'save'];
+// var buttonTexts = ['Cancel', 'Save'];
+// for (var i = 0; i < buttonIds.length; i++) {
+//     var button = document.createElement('button');
+//     button.id = buttonIds[i];
+//     button.type = 'button';
+//     button.className = 'button';
+//     if (button.id === 'save') {
+//         button.className += ' button--pink';
+//     } else {
+//         button.addEventListener('click', closeModal)
+//     }
+//     button.innerText = buttonTexts[i];
+//     buttonsContainer.appendChild(button);
+// }
+
+var cancelButton = document.createElement('button');
+cancelButton.id = 'cancel';
+cancelButton.type = 'button';
+cancelButton.className = 'button';
+cancelButton.innerText = 'Cancel';
+buttonsContainer.appendChild(cancelButton);
+cancelButton.addEventListener('click', closeModal);
+
+var saveButton = document.createElement('button');
+saveButton.id = 'save';
+saveButton.type = 'button';
+saveButton.className = 'button';
+saveButton.className += ' button--pink';
+saveButton.innerText = 'Save';
+buttonsContainer.appendChild(saveButton);
+
+
 
 // Append everything to main
 
@@ -361,7 +383,8 @@ modal.appendChild(buttonsContainer);
 
 
 function openAddModal() {
-    let saveButton = document.getElementById('save');
+    resetForm();
+    clearSaveButtonEvents();
     saveButton.addEventListener('click', function () {
         addArticleToServer()
     });
@@ -383,7 +406,8 @@ function openEditModal(article) {
     formImgUrl.value = article.imgUrl;
     formContent.value = article.content;
 
-    let saveButton = document.getElementById('save');
+    clearSaveButtonEvents();
+
     saveButton.addEventListener('click', function () {
         updateArticleToServer(article.id)
     });
