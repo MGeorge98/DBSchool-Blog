@@ -215,7 +215,7 @@ function createArticleDOMNode(article) {
 
     // Append all article nodes to container
     let articleNode = document.createElement('article');
-    articleNode.className = "article__container";
+    // articleNode.className = "article__container";
     articleNode.appendChild(title);
     articleNode.appendChild(infoContainer);
     articleNode.appendChild(buttonsContainer);
